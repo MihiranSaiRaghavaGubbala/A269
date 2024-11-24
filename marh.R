@@ -21,3 +21,19 @@ plot(filtered_data$mpg, filtered_data$price,
      ylab = "Price (£)",
      pch = 19,
      col = "blue")
+
+# Add a regression line
+model <- lm(price ~ mpg, data = filtered_data)
+abline(model, col = "red")
+
+# Pearson correlation test
+correlation_result <- cor.test(filtered_data$mpg, filtered_data$price, method = "pearson")
+print(correlation_result)
+
+hist(filtered_data$price,
+     breaks = 30, # Number of bins
+     main = "Distribution of Price with Bell Curve",
+     xlab = "Price (£)",
+     col = "lightblue",
+     border = "black",
+     probability = TRUE) # Scale y-axis to probability for the bell curve
