@@ -37,3 +37,12 @@ hist(filtered_data$price,
      col = "lightblue",
      border = "black",
      probability = TRUE) # Scale y-axis to probability for the bell curve
+
+# Add a bell curve (normal distribution)
+price_mean <- mean(filtered_data$price, na.rm = TRUE) # Mean of price
+price_sd <- sd(filtered_data$price, na.rm = TRUE) # Standard deviation of price
+
+curve(dnorm(x, mean = price_mean, sd = price_sd),
+      col = "red",
+      lwd = 2,
+      add = TRUE)
